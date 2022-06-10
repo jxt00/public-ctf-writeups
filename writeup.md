@@ -40,7 +40,7 @@ Couldn't figure out what this is so let's skip it for now.
 ++++++++++[>+>+++>+++++++>++++++++++<<<<-]>>>++++++++++++++.>++++.+.++++++++++.<<++.>>----------.++++++++++.<<.>>----------.+++++++++++.<---------------------.<.>>------.-------------.+++++++.
 ```
 
-Seems there's `pikachu`, we simply searched for `pikachu encoding` which pointed us to a [great intepreter](https://www.dcode.fr/pikalang-language). Running the code gave us the following output: `lol no` (>:|)
+Since there's `pikachu`, we simply searched for `pikachu encoding` which pointed us to a [great intepreter](https://www.dcode.fr/pikalang-language). Running the code gave us the following output: `lol no` (>:|)
 ```
 pi pi pi pi pi pi pi pi pi pi pika pipi pi pipi pi pi pi pipi pi pi pi pi pi pi pi pipi pi pi pi pi pi pi pi pi pi pi pichu pichu pichu pichu ka chu pipi pipi pipi pipi pi pi pi pi pi pi pi pi pikachu pi pi pi pikachu ka ka ka pikachu pichu pichu pi pi pikachu pipi pipi pi pi pikachu pi pikachu
 ```
@@ -60,7 +60,7 @@ Couldn't figure out what this is so let's skip it too for now.
 KRUGS4ZANFZSA3TPOQQHI2DFEBTGYYLHEBWWC3RAIQ5A====
 ```
 
-This seems awfully familiar, perhaps Caesar or Substitution cipher but it turned out to be Vigenere. Using another [wonder decoder](https://www.dcode.fr/vigenere-cipher), it is still unfortunately not the flag: `flag{notThatSimple:P}`
+This seems awfully familiar, perhaps Caesar or Substitution cipher but it turned out to be Vigenere. Using another [wonderful decoder](https://www.dcode.fr/vigenere-cipher), it is still unfortunately not the flag: `flag{notThatSimple:P}`
 ```
 synt{abgGungFvzcyr:C}
 ```
@@ -85,9 +85,11 @@ Find the packet related to an image upload and extract the image. Then, find the
 
 ### Summary
 To investigate the pcap, we can use [Wireshark](https://www.wireshark.org/download.html). Browsing thru the pcap, there are some HTTP traffic which may be useful since it was mentioned in the challenge. Hence, we can filter for just the `http` traffic.
+
 ![](img/upload1.png)
 
 Since the challenge mentioned an image upload, we investigate the png uploaded in packet 27331. Expanding on the fields reveals the flag stored in a string right below the `Author`.
+
 ![](img/upload2.png)
 
 
@@ -144,7 +146,7 @@ Are you a pro gamer? Can you get a score of 31337 in this game?
 http://challs.nusgreyhats.org:10529/
 
 ### Summary
-Inspecting the web page reveals that there is a `clumsy-min.js` which provides the logic for the game. As the code is very long, we can use a beautifier like https://beautifier.io/ to beautify the javascript codes in a way that is easier for us to read.
+Inspecting the web page reveals that there is a `clumsy-min.js` which provides the logic for the game. As the code is very long, we can use a [beautifier](https://beautifier.io/) to beautify the javascript codes in a way that is easier for us to read.
 
 As we browse thru the codes, a certain `genFlag()` function caught our eyes. It seems the most promising.
 ```javascript
@@ -158,6 +160,7 @@ genFlag = function() {
 ```
 
 A simple way would be to run `genFlag()` in the console and voila, it returns our flag.
+
 ![](img/flappy-js.png)
 
 ### Flag
@@ -181,6 +184,7 @@ Do you know where the image assets are stored? I've made a nice drawing for you.
 Since the file is an APK, we can simply open it using [Android Studio](https://developer.android.com/studio). Select the `Profile or Debug APK` option to start inspecting.
 
 The image assets are stored in a folder called `res` and so we slowly look thru all the images before finding the flag in `iA.png`.
+
 ![](img/memory1.png)
 
 ### Flag
