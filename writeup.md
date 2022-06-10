@@ -9,6 +9,10 @@
 Join our discord server @ [https://discord.gg/d9wbXEP2wN](https://discord.gg/d9wbXEP2wN).
 The flag is in #rules.
 
+### Summary
+Simply join the server and look at the first message in the rules channel.
+![](img/welcome.png)
+
 ### Flag
 ```
 grey{1_h4ve_read_da_rules_and_4gr33}
