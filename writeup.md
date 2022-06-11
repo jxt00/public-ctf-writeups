@@ -39,7 +39,7 @@ Decoding with CyberChef reveals the following numbers which seems like ASCII, bu
 54 68 69 73 20 69 73 20 6e 6f 74 20 69 74 20 6d 61 6e 2c 20 74 72 79 20 68 61 72 64 65 72 21
 ```
 
-Couldn't figure out what this is so let's skip it for now.
+This turns out to be [brainf*ck](https://www.dcode.fr/brainfuck-language): `This is it? nah`
 ```
 ++++++++++[>+>+++>+++++++>++++++++++<<<<-]>>>++++++++++++++.>++++.+.++++++++++.<<++.>>----------.++++++++++.<<.>>----------.+++++++++++.<---------------------.<.>>------.-------------.+++++++.
 ```
@@ -59,7 +59,7 @@ Next we need to convert this to text. We will probably need the ASCII values so 
 01100111011100100110010101111001011110110110011101101000001100000111001100110111010111110110001001111001011101000011001100100100010111110110111000110000011101000101111100110001011011100111011001101001011100110100100101100010011011000011001101111101
 ```
 
-Couldn't figure out what this is so let's skip it too for now.
+And this is Base 32: `This is not the flag man D:`
 ```
 KRUGS4ZANFZSA3TPOQQHI2DFEBTGYYLHEBWWC3RAIQ5A====
 ```
@@ -124,6 +124,12 @@ $Id: UPX 3.95 Copyright (C) 1996-2018 the UPX Team. All Rights Reserved. $
 UPX is an executable packer, hence we need to unpack to get the binary inside. We can run `upx` with the `-d` option to unpack.
 
 As we execute parcel, we can see that the program wants the address of a few functions. Hence, we can use `gdb` to inspect the binary. We then use `info functions` to retrieve the hex address of the 3 functions and convert them to decimal.
+```
+h12: 0x0000000000403215 = 4207125
+t80: 0x0000000000406891 = 4221073
+g20: 0x0000000000402e21 = 4206113
+```
+
 ```
 $ ./parcel 
 Tell me the address of the function h12 (in decimal): 4207125
